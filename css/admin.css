@@ -1,0 +1,46 @@
+/* Tableau de bord admin */
+.admin-dashboard {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.admin-section {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background-color: var(--light);
+    border-radius: 6px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background-color: var(--dark);
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Boutons admin */
+.btn-admin {
+    padding: 8px 16px;
+    margin-right: 8px;
+}
+
+.btn-approve {
+    background-color: var(--success);
+}
+
+.btn-reject {
+    background-color: var(--danger);
+}
