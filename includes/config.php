@@ -6,7 +6,7 @@ session_start();
 $base_url = 'http://' . $_SERVER['HTTP_HOST'] . '/bibliotheque/';
 
 // Vérifiez que le chemin est correct
-echo "Base URL: " . $base_url; // Debug temporaire
+//echo "Base URL: " . $base_url; // Debug temporaire
 
 $host = "localhost";
 $dbname = "bibliotheque_fac";

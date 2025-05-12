@@ -22,7 +22,7 @@ $demandes = $conn->query("SELECT d.*, u.nom as user_nom, l.titre as livre_titre
 
     <section class="ajout-livre">
         <h2>Ajouter un nouveau livre</h2>
-        <form action="gestion_livres.php" method="post">
+        <form action="gestion_livres.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="text" name="titre" placeholder="Titre" required class="form-control">
             </div>
@@ -31,6 +31,10 @@ $demandes = $conn->query("SELECT d.*, u.nom as user_nom, l.titre as livre_titre
             </div>
             <div class="form-group">
                 <input type="number" name="quantite" placeholder="Quantité" min="1" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="couverture">Couverture du livre :</label>
+                <input type="file" name="couverture" id="couverture" accept="image/*" class="form-control">
             </div>
             <button type="submit" name="ajouter" class="btn btn-primary">Ajouter</button>
         </form>
@@ -42,6 +46,7 @@ $demandes = $conn->query("SELECT d.*, u.nom as user_nom, l.titre as livre_titre
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Couverture</th>
                     <th>Titre</th>
                     <th>Auteur</th>
                     <th>Quantité</th>
@@ -52,13 +57,26 @@ $demandes = $conn->query("SELECT d.*, u.nom as user_nom, l.titre as livre_titre
                 <?php foreach ($livres as $livre): ?>
                     <tr>
                         <td><?= $livre['id'] ?></td>
+                        <td>
+                            <?php if (!empty($livre['image_path'])): ?>
+                                <img src="<?= $base_url . $livre['image_path'] ?>" alt="Couverture" style="max-height: 50px;">
+                            <?php endif; ?>
+                        </td>
                         <td><?= htmlspecialchars($livre['titre']) ?></td>
                         <td><?= htmlspecialchars($livre['auteur']) ?></td>
                         <td><?= $livre['quantite'] ?></td>
                         <td>
-                            <a href="gestion_livres.php?supprimer=<?= $livre['id'] ?>"
-                                class="btn btn-danger"
-                                onclick="return confirm('Êtes-vous sûr ?')">Supprimer</a>
+                            <div class="btn-group">
+                                <a href="modifier_livre.php?id=<?= $livre['id'] ?>"
+                                    class="btn btn-warning btn-sm">
+                                    <i class="bi bi-pencil"></i> Modifier
+                                </a>
+                                <a href="gestion_livres.php?supprimer=<?= $livre['id'] ?>"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Êtes-vous sûr ?')">
+                                    <i class="bi bi-trash"></i> Supprimer
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>

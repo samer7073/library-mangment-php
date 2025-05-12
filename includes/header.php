@@ -112,6 +112,19 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Style pour les images des livres */
+        .table img {
+            max-height: 50px;
+            max-width: 100px;
+            object-fit: contain;
+            border-radius: 3px;
+        }
+
+        /* Style pour le champ de fichier */
+        .form-control[type="file"] {
+            padding: 0.375rem 0.75rem;
+        }
+
         .admin-container h1 {
             color: #2c3e50;
             border-bottom: 2px solid #eee;
